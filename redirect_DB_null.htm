@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="dodo : jozef.javorsky.strom44zem88@gmail.com" />
+    <meta name="description" content="Node.js & MongoDB tryouts." />
+    <title>eLibrary v0.04</title>
+    <link rel="icon" type="image/x-icon" sizes="16x16"
+        href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABXSURBVDhPzYxhCkAhDIJ34278zlI9hwuhtf71IaRDs8nX/ueE18ZzJd9UiBocPoCAXHjXvDOMmneGMTIF5ML74lJ0kMy08PIgEWuTcClewwd1+abCqJl1ymiErwObpFQAAAAASUVORK5CYII=" />
+    <style>
+        #body-html {
+            background-color: rgb(122, 122, 122);
+            user-select: none;
+        }
+
+        .hrElement {
+            width: 11cm;
+            margin-left: 2mm;
+            margin-top: 4mm;
+            margin-bottom: 4mm;
+            background-color: rgb(0, 0, 0);
+            height: 2mm;
+        }
+
+        #header-h2 {
+            font-family: cursive;
+            text-decoration: overline underline;
+            margin-left: 2cm;
+            display: inline-block;
+            border: 1mm dotted rgba(0, 0, 0, 1);
+            box-shadow: 0 0 8mm 4mm rgb(0, 0, 0);
+            color: rgba(0, 0, 0, 1);
+        }
+
+        #main-p {
+            margin-left: 1cm;
+            font-family: cursive;
+            color: rgba(0, 0, 0, 1);
+            font-size: 4mm;
+            font-weight: 900;
+        }
+
+        #footer-bttn {
+            margin-left: 1cm;
+            border: 0;
+            background-color: rgb(0, 200, 100);
+            color: rgba(0, 0, 0, 1);
+            font-family: cursive;
+            font-weight: 900;
+            font-size: 4mm;
+            padding: 2mm 3mm 2mm 3mm;
+            border-radius: 3mm;
+        }
+    </style>
+</head>
+
+<body id="body-html">
+    <hr class="hrElement" />
+    <header>
+        <h2 id="header-h2">|eLibrary v0.04|</h2>
+    </header>
+    <hr class="hrElement" />
+    <main>
+        <p id="main-p">
+            "Operation yet not possible,
+            <br />
+            due to empty books collection of database."
+        </p>
+    </main>
+    <hr class="hrElement" />
+    <footer>
+        <button id="footer-bttn">redirect</button>
+    </footer>
+    <hr class="hrElement" />
+    <script>
+        "use strict";
+        try {
+            document.querySelector("#footer-bttn").addEventListener("mouseenter", (ev) => {
+                ev.target.style.cursor = "pointer";
+                ev.target.style.backgroundColor = "rgb(0, 0, 0)";
+                ev.target.style.color = "rgba(0, 200, 100, 1)";
+            });
+            document.querySelector("#footer-bttn").addEventListener("mouseleave", (ev) => {
+                ev.target.style.backgroundColor = "rgb(0, 200, 100)";
+                ev.target.style.color = "rgba(0, 0, 0, 1)";
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+    <script>
+        "use strict";
+        try {
+            document.querySelector("#footer-bttn").addEventListener("click", () => {
+                window.location = "/?redirect=true";
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+</body>
+
+</html>

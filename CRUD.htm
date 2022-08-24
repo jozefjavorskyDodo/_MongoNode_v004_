@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="dodo : jozef.javorsky.strom44zem88@gmail.com" />
+    <meta name="description" content="Node.js & MongoDB tryouts." />
+    <title>eLibrary v0.04</title>
+    <link rel="icon" type="image/x-icon" sizes="16x16"
+        href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABXSURBVDhPzYxhCkAhDIJ34278zlI9hwuhtf71IaRDs8nX/ueE18ZzJd9UiBocPoCAXHjXvDOMmneGMTIF5ML74lJ0kMy08PIgEWuTcClewwd1+abCqJl1ymiErwObpFQAAAAASUVORK5CYII=" />
+    <style>
+        #body-html {
+            background-color: rgb(122, 122, 122);
+            user-select: none;
+        }
+
+        .hrElement {
+            width: 11cm;
+            margin-left: 2mm;
+            margin-top: 4mm;
+            margin-bottom: 4mm;
+            background-color: rgb(0, 0, 0);
+            height: 2mm;
+        }
+
+        #header-h2 {
+            font-family: cursive;
+            text-decoration: overline underline;
+            margin-left: 2cm;
+            display: inline-block;
+            border: 1mm dotted rgba(0, 0, 0, 1);
+            box-shadow: 0 0 8mm 4mm rgb(0, 0, 0);
+            color: rgba(0, 0, 0, 1);
+        }
+
+        #main-nav {
+            margin-left: 2cm;
+            padding: 4mm 8mm 4mm 8mm;
+            background-color: rgb(0, 0, 0);
+            border: 0;
+            border-radius: 3mm;
+            display: inline-block;
+        }
+
+        .bttnCRUD {
+            background-color: rgb(122, 122, 122);
+            color: rgba(0, 0, 0, 1);
+            border: 0;
+            border-radius: 3mm;
+            margin-top: 3mm;
+            margin-bottom: 3mm;
+            padding: 1mm 3mm 1mm 3mm;
+            font-family: cursive;
+            font-size: 4mm;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body id="body-html">
+    <hr class="hrElement" />
+    <header>
+        <h2 id="header-h2">|eLibrary v0.04|</h2>
+    </header>
+    <hr class="hrElement" />
+    <main>
+        <nav id="main-nav">
+            <button class="bttnCRUD" id="c-reate-bttn">add a book</button>
+            <br />
+            <button class="bttnCRUD" id="r-ead-bttn">details of the book</button>
+            <br />
+            <button class="bttnCRUD" id="u-pdate-bttn">edit details</button>
+            <br />
+            <button class="bttnCRUD" id="d-elete-bttn">remove the book</button>
+        </nav>
+    </main>
+    <hr class="hrElement" />
+    <script>
+        "use strict";
+        try {
+            let node_bttns = document.querySelectorAll(".bttnCRUD");
+            node_bttns.forEach(b => {
+                b.addEventListener("mouseenter", (ev) => {
+                    ev.target.style.cursor = "pointer";
+                    ev.target.parentElement.style.backgroundColor = "rgb(0, 200, 100)";
+                });
+                b.addEventListener("mouseleave", (ev) => {
+                    ev.target.parentElement.style.backgroundColor = "rgb(0, 0, 0)";
+                });
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+        try {
+            document.querySelector("#c-reate-bttn").addEventListener("click", () => {
+                window.location = "/?operation=create";
+            });
+            document.querySelector("#r-ead-bttn").addEventListener("click", () => {
+                window.location = "/?operation=read";
+            });
+            document.querySelector("#u-pdate-bttn").addEventListener("click", () => {
+                window.location = "/?operation=update";
+            });
+            document.querySelector("#d-elete-bttn").addEventListener("click", () => {
+                window.location = "/?operation=delete";
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="dodo : jozef.javorsky.strom44zem88@gmail.com" />
+    <meta name="description" content="Node.js & MongoDB tryouts." />
+    <title>eLibrary v0.04</title>
+    <link rel="icon" type="image/x-icon" sizes="16x16"
+        href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABXSURBVDhPzYxhCkAhDIJ34278zlI9hwuhtf71IaRDs8nX/ueE18ZzJd9UiBocPoCAXHjXvDOMmneGMTIF5ML74lJ0kMy08PIgEWuTcClewwd1+abCqJl1ymiErwObpFQAAAAASUVORK5CYII=" />
+    <style>
+        #body-html {
+            background-color: rgb(122, 122, 122);
+            user-select: none;
+        }
+
+        .hrElement {
+            width: 11cm;
+            margin-left: 2mm;
+            margin-top: 4mm;
+            margin-bottom: 4mm;
+            background-color: rgb(0, 0, 0);
+            height: 2mm;
+        }
+
+        #header-h2 {
+            font-family: cursive;
+            text-decoration: overline underline;
+            margin-left: 2cm;
+            display: inline-block;
+            border: 1mm dotted rgba(0, 0, 0, 1);
+            box-shadow: 0 0 8mm 4mm rgb(0, 0, 0);
+            color: rgba(0, 0, 0, 1);
+        }
+
+        #main-p {
+            margin-left: 7mm;
+            font-family: cursive;
+            color: rgba(0, 0, 0, 1);
+            font-size: 3.8mm;
+            font-weight: 900;
+        }
+
+        .inps {
+            width: 8.8cm;
+            margin-left: 1cm;
+            color: rgba(0, 0, 0, 1);
+            background-color: rgb(222, 222, 222);
+        }
+
+        .inps::placeholder {
+            color: rgb(0, 0, 0);
+            opacity: 1;
+        }
+
+        .inps:focus {
+            color: rgba(0, 0, 0, 1);
+            outline: 1.7mm solid rgba(0, 0, 0, 1);
+        }
+
+        #footer-p {
+            margin-left: 2cm;
+            font-family: cursive;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 1);
+            font-size: 4mm;
+        }
+
+        #footer-bttn {
+            margin-left: 2cm;
+            border: 0;
+            background-color: rgb(0, 200, 100);
+            font-family: cursive;
+            font-weight: 900;
+            font-size: 4mm;
+            border-radius: 3mm;
+            padding: 2mm 3mm 2mm 3mm;
+        }
+    </style>
+</head>
+
+<body id="body-html">
+    <hr class="hrElement" />
+    <header>
+        <h2 id="header-h2">|eLibrary v0.04|</h2>
+    </header>
+    <hr class="hrElement" />
+    <main>
+        <p id="main-p">...hint : alphabet & spacing, string of max 24 chars</p>
+        <input type="text" maxlength="24" placeholder="TITLE" class="inps" id="title-inp" />
+        <br />
+        <br />
+        <input type="text" maxlength="24" placeholder="AUTHOR" class="inps" id="author-inp" />
+    </main>
+    <hr class="hrElement" />
+    <footer>
+        <p id="footer-p">
+            "A pseudo-random ISBN for the book,
+            <br />
+            is auto generated & implicitly set."
+        </p>
+        <button id="footer-bttn">add a book</button>
+    </footer>
+    <script>
+        "use strict";
+        try {
+            document.querySelector("#footer-bttn").addEventListener("mouseenter", (ev) => {
+                ev.target.style.cursor = "pointer";
+                ev.target.style.backgroundColor = "rgb(0, 0, 0)";
+                ev.target.style.color = "rgba(0, 200, 100, 1)";
+            });
+            document.querySelector("#footer-bttn").addEventListener("mouseleave", (ev) => {
+                ev.target.style.backgroundColor = "rgb(0, 200, 100)";
+                ev.target.style.color = "rgba(0, 0, 0, 1)";
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+    <script>
+        "use strict";
+        try {
+            document.querySelector("#title-inp").addEventListener("input", (ev) => {
+                let title_arr = [...ev.target.value].map(char => Number(char.charCodeAt()));
+                for (let indx = 0; indx <= title_arr.length - 1; indx++) {
+                    if (
+                        (title_arr[indx] === 32) ||
+                        ((title_arr[indx] > 64) && (title_arr[indx] < 91)) ||
+                        ((title_arr[indx] > 96) && (title_arr[indx] < 123))
+                    ) {
+                        continue;
+                    } else {
+                        ev.target.value = '';
+                        break;
+                    };
+                };
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+    <script>
+        "use strict";
+        try {
+            document.querySelector("#author-inp").addEventListener("input", (ev) => {
+                let author_arr = [...ev.target.value].map(char => Number(char.charCodeAt()));
+                for (let indx = 0; indx <= author_arr.length - 1; indx++) {
+                    if (
+                        (author_arr[indx] === 32) ||
+                        ((author_arr[indx] > 64) && (author_arr[indx] < 91)) ||
+                        ((author_arr[indx] > 96) && (author_arr[indx] < 123))
+                    ) {
+                        continue;
+                    } else {
+                        ev.target.value = '';
+                        break;
+                    };
+                };
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+    <script>
+        "use strict";
+        try {
+            document.querySelector("#footer-bttn").addEventListener("click", () => {
+                if (
+                    (document.querySelector("#title-inp").value !== '') &&
+                    (document.querySelector("#author-inp").value !== '')
+                ) {
+                    window.location = "/?operation=create&title=" + encodeURIComponent(String(document.querySelector("#title-inp").value)) + "&author=" + encodeURIComponent(String(document.querySelector("#author-inp").value));
+                } else {
+                    alert(String.fromCodePoint(10060) + "\u00a0\u00a0" + "Valid title & author are a must.");
+                };
+            });
+        } catch (err) {
+            if (err) console.log(err);
+        };
+    </script>
+
+</body>
+
+</html>
